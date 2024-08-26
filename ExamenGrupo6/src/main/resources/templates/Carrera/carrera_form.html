@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">Formulario de Carrera</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 th:text="${pageTitle}">Formulario de Carrera</h1>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/carreras/guardar}" th:object="${carrera}" method="post">
+                <div class="form-group">
+                    <label for="nombreCarrera">Nombre</label>
+                    <input type="text" id="nombreCarrera" name="nombreCarrera" class="form-control" th:field="*{nombreCarrera}" placeholder="Introduce el nombre de la carrera" maxlength="45" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" name="departamento" class="form-control" th:field="*{departamento}" required>
+                        <option value="">Selecciona un departamento</option>
+                        <option th:each="departamento : ${departamentos}" th:value="${departamento.id}" th:text="${departamento.nombreDepartamento}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="numNivel">Número de Niveles</label>
+                    <input type="number" id="numNivel" name="numNivel" class="form-control" th:field="*{numNivel}" placeholder="Introduce el número de niveles de la carrera" required />
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a th:href="@{/carreras}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalles de Estudiante</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container my-5">
+  <div class="card">
+    <div class="card-header bg-info text-white text-center">
+      <h2 th:text="${estudiante.nombreEstudiante} + ' ' + ${estudiante.apellidoEstudiante}"></h2>
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <h5><strong>ID:</strong></h5>
+        <p th:text="${estudiante.id}"></p>
+      </div>
+      <div class="mb-3">
+        <h5><strong>Nombre:</strong></h5>
+        <p th:text="${estudiante.nombreEstudiante}"></p>
+      </div>
+      <div class="mb-3">
+        <h5><strong>Apellido:</strong></h5>
+        <p th:text="${estudiante.apellidoEstudiante}"></p>
+      </div>
+      <div class="mb-3">
+        <h5><strong>Carrera:</strong></h5>
+        <p th:text="${estudiante.carrera.nombreCarrera}"></p>
+      </div>
+      <div class="text-center">
+        <a th:href="@{/estudiantes}" class="btn btn-secondary">Volver a la lista</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

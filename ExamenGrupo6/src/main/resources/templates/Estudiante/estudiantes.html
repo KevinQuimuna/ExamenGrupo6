@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionar Estudiantes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container my-5">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <a class="navbar-brand" th:href="@{/}">ESPE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estudiantes}">Estudiantes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/carreras}">Carreras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/usuarios}">Usuario</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Fin del Navbar -->
+
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1>Gestionar Estudiantes</h1>
+        </div>
+        <div class="card-body">
+            <div class="mb-3 text-center">
+                <a class="btn btn-success btn-lg" th:href="@{/estudiantes/nuevo}">Añadir Estudiante</a>
+            </div>
+
+            <div th:if="${message}" class="alert alert-success" role="alert">
+                <p th:text="${message}"></p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Carrera</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="estudiante : ${listEstudiantes}">
+                        <tr>
+                            <td>[[${estudiante.id}]]</td>
+                            <td>[[${estudiante.nombreEstudiante}]]</td>
+                            <td>[[${estudiante.apellidoEstudiante}]]</td>
+                            <td>[[${estudiante.carrera.nombreCarrera}]]</td>
+
+                            <td>
+                                <a class="btn btn-info btn-sm" th:href="@{'/estudiantes/detalles/' + ${estudiante.id}}">Detalles</a>
+                                <a class="btn btn-warning btn-sm" th:href="@{'/estudiantes/editar/' + ${estudiante.id}}">Editar</a>
+                                <a class="btn btn-danger btn-sm" th:href="@{'/estudiantes/eliminar/' + ${estudiante.id}}">Eliminar</a>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

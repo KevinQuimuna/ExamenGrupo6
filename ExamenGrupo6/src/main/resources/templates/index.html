@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Grupo 6</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container my-5">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <a class="navbar-brand" th:href="@{/}">ESPE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estudiantes}">Estudiantes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/carreras}">Carreras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/usuarios}">Usuario</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Fin del Navbar -->
+
+    <!-- Contenido Principal -->
+    <div class="jumbotron text-center">
+        <h1 class="display-4">¡Bienvenidos al Sistema de Gestión!</h1>
+        <p class="lead">Grupo 6 - Examen Tercer Parcial</p>
+        <hr class="my-4">
+        <p>Integrantes:</p>
+        <ul class="list-unstyled">
+            <li>Kevin Quimuña</li>
+            <li>Wagner Cuenca</li>
+        </ul>
+    </div>
+    <!-- Fin del Contenido Principal -->
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

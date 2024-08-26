@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Usuario</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header bg-info text-white text-center">
+            <h2>Detalles del Usuario</h2>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-4">
+                <img th:src="@{'/imgUsuarios/' + ${usuario.foto}}" alt="Foto del usuario" class="rounded-circle" width="150" height="150" />
+            </div>
+            <div class="mb-3">
+                <h5><strong>ID:</strong></h5>
+                <p th:text="${usuario.id}"></p>
+            </div>
+            <div class="mb-3">
+                <h5><strong>Tipo de Usuario:</strong></h5>
+                <p th:text="${usuario.tipo.nombreTipo}"></p>
+            </div>
+            <div class="mb-3">
+                <h5><strong>Nombre de Usuario:</strong></h5>
+                <p th:text="${usuario.user}"></p>
+            </div>
+            <div class="text-center">
+                <a th:href="@{/usuarios}" class="btn btn-secondary">Volver a la lista</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

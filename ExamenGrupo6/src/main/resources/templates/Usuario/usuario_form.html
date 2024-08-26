@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">Formulario de Usuario</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 th:text="${pageTitle}">Formulario de Usuario</h1>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post">
+                <!-- Campo oculto para el ID -->
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="form-group">
+                    <label for="user">Nombre de Usuario</label>
+                    <input type="text" id="user" name="user" class="form-control" th:field="*{user}" placeholder="Introduce el nombre de usuario" maxlength="45" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="pass">Contraseña</label>
+                    <input type="password" id="pass" name="pass" class="form-control" th:field="*{pass}" placeholder="Introduce la contraseña" maxlength="45" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo de Usuario</label>
+                    <select id="tipo" name="tipo" class="form-control" th:field="*{tipo}" required>
+                        <option value="" disabled selected>Selecciona un tipo de usuario</option>
+                        <option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.nombreTipo}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="text" id="foto" name="foto" class="form-control" th:field="*{foto}" placeholder="Introduce el nombre del archivo de la foto" maxlength="20" />
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a th:href="@{/usuarios}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
